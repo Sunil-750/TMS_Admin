@@ -1,0 +1,59 @@
+<div class = "nearby-carrier-div" *ngIf = "nearbyCarrier != null">
+  <h3>NearBy Carrier</h3>
+  <table class="list-table" style="width: 100%;">
+    <tr style="background-color: grey;color:white">
+      <td>ID</td>
+      <td>Name</td>
+      <td>Contact No.</td>
+      <td>Vehicle Type</td>
+      <td>Location</td>
+      <td>Status</td>
+    </tr>  
+    <tr class="tr-tag" *ngFor="let carrier of nearbyCarrier" [class.selected]="order === selectedOrder">
+        <td class="td-tag">{{carrier.CARRIERID}}</td>
+        <td class="td-tag">{{carrier.FULLNAME}}</td>
+        <td class="td-tag">{{carrier.CONTACT}}</td>
+        <td class="td-tag">{{carrier.VEHICLE_TYPE}}</td>
+        <td class="td-tag"> {{carrier.LOCATION}}</td>
+        <td class="td-tag" *ngIf="carrier.VEHICLE_STATUS == 0">Booked</td>
+        <td class="td-tag" *ngIf="carrier.VEHICLE_STATUS == 1" style="color: green;font-size: larger;">Available</td>
+      </tr>
+  </table>
+</div>
+<div class = "all-carrier-div">
+  <h3>All Carrier</h3>
+  <table class="list-table" style="width: 100%;">
+    <tr style="background-color: grey;color:white">
+      <td>ID</td>
+      <td>Name</td>
+      <td>Contact No.</td>
+      <td>Vehicle Type</td>
+      <td>Location</td>
+      <td>Status</td>
+    </tr>
+      <tr class="tr-tag" *ngFor="let carrier of allCarrier" [class.selected]="order === selectedOrder">
+        <td class="td-tag">{{carrier.CARRIERID}}</td>
+        <td class="td-tag">{{carrier.FULLNAME}}</td>
+        <td class="td-tag">{{carrier.CONTACT}}</td>
+        <td class="td-tag">{{carrier.VEHICLE_TYPE}}</td>
+        <td class="td-tag">{{carrier.LOCATION}}</td>
+        <td class="td-tag" *ngIf="carrier.VEHICLE_STATUS == 0">Booked</td>
+        <td class="td-tag" *ngIf="carrier.VEHICLE_STATUS == 1" style="color: green;font-size: larger;">Available</td>
+        
+        
+      </tr>
+  </table>
+</div>
+
+<!-- ADDRESS: "15, Gayatri Nagar Palda, Indore"
+CARRIERID: 9
+CONTACT: "9806924318"​​
+EMAIL: "satish@gmail.com"​​
+FULLNAME: "Sattu"​​
+LICENCE_NO: "124FHTU"​​
+LOCATION: "Bhopal"​​
+PASSWORD: "abcdabcd"​​
+VEHICLE_NO: "MP09CC1234"​​
+VEHICLE_STATUS: 0​​
+VEHICLE_TYPE: "Vikram"
+ -->

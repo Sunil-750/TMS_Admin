@@ -1,0 +1,96 @@
+<div class="navbar">
+  <div class="dropdown">
+    <button class="dropbtn">Status
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a (click)="getAllOrders()">All</a>
+      <a (click)="getOrderByStatus(0)">Initiated</a>
+      <a (click)="getOrderByStatus(1)">Waiting</a>
+      <a (click)="getOrderByStatus(2)">Ordered</a>
+      <a (click)="getOrderByStatus(3)">Picked</a>
+      <a (click)="getOrderByStatus(4)">On Way</a>
+      <a (click)="getOrderByStatus(5)">Delivered</a>
+    </div>
+  </div>
+</div>
+
+<div class="orderlist">
+  <h2 style="text-align: center;">List of orders</h2>
+  <table class="list-table" style="width: 100%;">
+    <tbody >
+      <tr *ngFor="let order of allOrders" [class.selected]="order === selectedOrder" (click)="getCurrentOrder(order)">
+        <td>{{order.ORDER_ID}}</td>
+        <td>{{order.owner_name}}</td>
+        <td *ngIf="order.STATUS == 0">Initiated</td>
+        <td *ngIf="order.STATUS == 1" >Waiting</td>
+        <td *ngIf="order.STATUS == 2" >Ordered</td>
+        <td *ngIf="order.STATUS == 3" >Picked</td>
+        <td *ngIf="order.STATUS == 4" style ="color: blue;">On way</td>
+        <td *ngIf="order.STATUS == 5" style ="color: green">Delivered</td>
+        <td *ngIf="order.STATUS==6" style="color: red;">Cancelled</td>
+        
+      </tr>
+    </tbody>
+  <!--
+  <ul *ngfor="let data of userData">
+    {{data.id}} <br>{{data.name}}
+    <button class="btn-primary" (click)="getCurrentUser(data)">Open</button>
+  </ul>
+-->
+
+</table>
+</div>
+<div class="orderview">
+  <h2 style="text-align: center;">Order Details</h2>
+  <div *ngIf="selectedOrder != null">
+    <table id="order-detail-table" >
+      <tr>
+        <td id="col1"><b>Order ID</b></td>
+        <td id="col2">{{selectedOrder.ORDER_ID}}</td>
+      </tr>
+      <tr>
+        <td id="col1"><b>Owner ID</b></td>
+        <td id="col2">{{selectedOrder.OWNER_ID}}</td>
+      </tr>
+      <tr>
+        <td id="col1"><b>Owner Name</b></td>
+        <td id="col2">{{selectedOrder.owner_name}}</td>
+      </tr>
+      <tr>
+        <td id="col1"><b>Vehicle Needed</b></td>
+        <td id="col2">{{selectedOrder.VEHICLE_TYPE}}</td>
+      </tr>
+      <tr>
+        <td id="col1"><b>From</b></td>
+        <td id="col2">{{selectedOrder.FROM_LOCATION}}</td>
+      </tr>
+      <tr>
+        <td id="col1"><b>To</b></td>
+        <td id="col2">{{selectedOrder.TO_LOCATION}}</td>
+      </tr>
+      <tr>
+        <td id="col1"><b>Type of load</b></td>
+        <td id="col2">{{selectedOrder.LOAD_TYPE}}</td>
+      </tr>
+      <tr>
+        <td id="col1"><b>No. of load items</b></td>
+        <td id="col2">{{selectedOrder.LOAD_ITEM}}</td>
+      </tr>
+      <tr>
+        <td id="col1"><b>Weight</b></td>
+        <td id="col2">{{selectedOrder.LOAD_WEIGHT}}</td>
+      </tr>
+      <tr>
+        <td id="col1"><b>Order Date</b></td>
+        <td id="col2">{{selectedOrder.ORDER_DATE}}</td>
+      </tr>
+  </table>
+  <div class="btn-div" >
+    <button *ngIf="selectedOrder.STATUS < 2" class="btn1" (click)="findNearbyVehicle()">Find nearby vehicle</button>
+    <button class="btn2" (click) = "rejectOrder()">Reject</button>
+  </div>
+  </div>
+    
+    
+</div>

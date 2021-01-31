@@ -1,0 +1,7 @@
+ <div class="topnav">
+    <a class="active" [routerLink]="['order']">Orders</a>
+    <a [routerLink]="['owner']">Owners</a>
+    <a [routerLink]="['carrier']">Carriers</a>
+    <a style="float: right;" (click)="logout()">Logout</a>
+  </div>
+ <router-outlet></router-outlet>

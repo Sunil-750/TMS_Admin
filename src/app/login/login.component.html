@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="form">
+      <input placeholder="Email" type="text"  [(ngModel)]="email"><br>
+      <input class="psw" placeholder="Password" type="password" [(ngModel)]="password">
+      <button class="btn" (click)="login()">Log In</button>
+      
+    </div>
+    <p style="color: red;text-align: center;">{{message}}</p>
+</div>

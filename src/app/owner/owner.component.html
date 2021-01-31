@@ -1,0 +1,28 @@
+<div class = "owner-div">
+  <h3>All Owner</h3>
+  <table class="list-table" style="width: 100%;">
+      <thead>
+      <tr style="background-color: grey;color:white">
+        <td>ID</td>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Contact</td>
+        <td>Address</td>
+      </tr>
+      </thead>
+      <tr class ="tr-tag" *ngFor="let owner of allOwner" [class.selected]="order === selectedOrder">
+        <td class="td-tag">{{owner.OWNERID}}</td>
+        <td class="td-tag">{{owner.FULLNAME}}</td>
+        <td class="td-tag">{{owner.EMAIL}}</td>
+        <td class="td-tag">{{owner.CONTACT}}</td>
+        <td class="td-tag">{{owner.ADDRESS}}</td>
+      </tr>
+  </table>
+</div>
+<!-- ADDRESS: "Indore"​​
+CONTACT: "748342922"​​
+EMAIL: "mali@gmail.com"​​
+FULLNAME: "Sandeep Mali"​​
+LOCATION: "Indore"​​
+OWNERID: 1​​
+PASSWORD: "452001" -->
